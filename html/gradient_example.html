@@ -1,0 +1,24 @@
+<head>
+    <title>
+        Gradient example
+    </title>
+    <script src="../script/gradient.js"></script>
+</head>
+<body>
+    <script>
+        const cnt = 100;
+        var gradient = new Gradient("ff0000", "00ff00", 0, cnt)
+        var body = document.getElementsByTagName('body')[0];
+        body.style.display = "flex";
+        body.style.margin = 0;
+        document.addEventListener('DOMContentLoaded', function() {
+            for (let i = 0; i <= cnt; ++i) {
+                var div = document.createElement("div");
+                div.style.backgroundColor = gradient.at(i);
+                div.style.height = "100%";
+                div.style.width = "10%";
+                body.appendChild(div)
+            }
+        });
+    </script>
+</body>
