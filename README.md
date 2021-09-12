@@ -6,4 +6,4 @@
 ## Features
 
 ### Scripts:
-[x] - [Gradient](script/gradient.js) - accepts color and number ranges and then maps it through the "at" function. ([Example](html/gradient_example.html))
+- [x] - [Gradient](script/gradient.js) - accepts color and number ranges and then maps it through the "at" function. ([Example](html/gradient_example.html))
