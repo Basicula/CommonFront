@@ -1,15 +1,14 @@
 class DropDownButton {
     constructor(header_text, on_open_callback, on_hide_callback) {
         this.header_text = header_text;
+        this.on_open_callback = on_open_callback;
+        this.on_hide_callback = on_hide_callback;
         this._init_element();
     }
 
-    _init_element(on_open_callback, on_hide_callback) {
+    _init_element() {
         // main container
         this.element = document.createElement("div");
-        // attach callbacks to the main element
-        this.element.on_open_callback = on_open_callback;
-        this.element.on_hide_callback = on_hide_callback;
 
         // button itself
         this.button = document.createElement("div");
