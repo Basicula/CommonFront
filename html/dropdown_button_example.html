@@ -1,0 +1,24 @@
+<head>
+    <script src="../script/dropdown_button.js"></script>
+    <!-- for pretty arrow signs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body id="body">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var inner = document.getElementById("inner");
+            var dropdown_btn = new DropDownButton(
+                "Header",
+                function() {
+                    alert("Some additional custom work on opening");
+                },
+                function() {
+                    alert("Some additional custom work on closing");
+                });
+            document.getElementById("body").appendChild(dropdown_btn.element);
+            var custom_inner = document.createElement("div");
+            custom_inner.textContent = "CustomInner";
+            dropdown_btn.set_inner_content(custom_inner);
+        });
+    </script>
+</body>
