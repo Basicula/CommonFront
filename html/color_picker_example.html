@@ -1,0 +1,20 @@
+<head>
+    <script src="../script/color_picker.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/color_picker.css">
+</head>
+<body id="body">
+    <div id="some_div_with_customizable_color" class="some-div">Blabla</div>
+    <label for="selected_color">Selected color:</label>
+    <div id="selected_color" name="selected_color" class="selected-color-div"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var target = document.getElementById("some_div_with_customizable_color");
+            var color_picker = new ColorPicker();
+            var selected_color = document.getElementById("selected_color");
+            color_picker.onchange_callback = function() {
+                selected_color.textContent = color_picker.color;
+            };
+            target.appendChild(color_picker.element);
+        });
+    </script>
+</body>
