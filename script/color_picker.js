@@ -10,7 +10,7 @@ class ColorPicker {
         this.element.classList.add("color-picker");
 
         this.image = document.createElement("img");
-        this.image.src = "../images/rgb_wheel.png";
+        this.image.src = "https://combinatronics.com/Basicula/CommonFront/master/images/rgb_wheel.png";
         this.element.appendChild(this.image);
 
         this.input = document.createElement("input");
