@@ -13,6 +13,7 @@
             var selected_color = document.getElementById("selected_color");
             color_picker.onchange_callback = function() {
                 selected_color.textContent = color_picker.color;
+                target.style.backgroundColor = color_picker.color;
             };
             target.appendChild(color_picker.element);
         });

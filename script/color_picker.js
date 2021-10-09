@@ -25,7 +25,6 @@ class ColorPicker {
         }
         
         var change_color_function = function () {
-            self.element.parentElement.style.backgroundColor = this.value;
             self.color = this.value;
             self.onchange_callback();
         };
