@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+}
+
+.splitter-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+.splitter {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.splitter:hover, .splitter:active {
+    background-color: rgb(36, 36, 36);
+}
+
+.vertical-splitter {
+    cursor: ew-resize;
+    flex-direction: row;
+}
+
+.horizontal-splitter {
+    cursor: ns-resize;
+    flex-direction: column;
+}
+
+.grid-container {
+    position: relative;
+    display: unset;
+    box-sizing: border-box;
+}
+
+.grid-cell {
+    border-radius: 15px;
+    position: absolute;
+    box-sizing: border-box;
+}

@@ -1,0 +1,91 @@
+<head>
+    <title>
+        Dynamic grid example
+    </title>
+    <script src="../script/common_utils.js"></script>
+    <script src="../script/dynamic_grid.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dynamic_grid.css">
+</head>
+<body id="body">
+    <script>
+        var body = document.getElementById('body');
+        var main_grid = new DynamicGrid([[0, 1]]);
+        body.appendChild(main_grid.element);
+        var config_cell = main_grid.grid_components[0];
+        var grid_cell = main_grid.grid_components[1];
+
+        const max_size = 10;
+        var sizes_input = document.createElement("div");
+        function create_select(name) {
+            var select = document.createElement("select")
+            select.id = name + "_input";
+            for (let i = 1; i <= max_size; ++i) {
+                var opt = document.createElement("option");
+                opt.value = i;
+                opt.textContent = i;
+                select.appendChild(opt);
+            }
+            var select_label = document.createElement("label");
+            select_label.for = select.id;
+            select_label.textContent = name + ": ";
+            return select;
+        }
+        var height_input = create_select("Height");
+        var width_input = create_select("Width");
+        sizes_input.appendChild(height_input);
+        sizes_input.appendChild(width_input);
+        config_cell.appendChild(sizes_input);
+
+        function create_matrix_input(height, width) {
+            var matrix_input_table = document.getElementById("input_table");
+            while (matrix_input_table.firstChild) {
+                matrix_input_table.removeChild(matrix_input_table.lastChild);
+            }
+            for (let row_id = 0; row_id < height; ++row_id) {
+                var row_element = document.createElement("tr");
+                for (let column_id = 0; column_id < width; ++column_id) {
+                    var cell_element = document.createElement("td");
+                    cell_element.id = "td_" + row_id + "_" + column_id;
+                    cell_element.style.border = "1px solid black";
+                    cell_element.style.width = 100 / width + "px";
+                    cell_element.contentEditable = true;
+                    row_element.appendChild(cell_element);
+                }
+                matrix_input_table.appendChild(row_element);
+            }
+        }
+
+        function update_matrix_input() {
+            create_matrix_input(height_input.value, width_input.value);
+        }
+
+        height_input.onchange = update_matrix_input;
+        width_input.onchange = update_matrix_input;
+
+        var matrix_input_table = document.createElement("table");
+        matrix_input_table.id = "input_table";
+        config_cell.appendChild(matrix_input_table);
+
+        var generate_button = document.createElement("button");
+        generate_button.textContent = "Generate";
+        generate_button.onclick = function() {
+            while (grid_cell.firstChild)
+                grid_cell.removeChild(grid_cell.lastChild);
+            var matrix = [];
+            for (let row_id = 0; row_id < height_input.value; ++row_id) {
+                matrix.push([]);
+                for (let column_id = 0; column_id < width_input.value; ++column_id)
+                    matrix[row_id].push(parseInt(document.getElementById("td_" + row_id + "_" + column_id).textContent));
+            }
+            var example_grid = new DynamicGrid(matrix, grid_cell.clientHeight, grid_cell.clientWidth);
+            grid_cell.appendChild(example_grid.element);
+            for (var example_grid_cell of example_grid.grid_components) {
+                example_grid_cell.style.overflow = "auto";
+                var text = example_grid_cell.id + "_test_content ";
+                for (let i = 0; i < 100; ++i)
+                    example_grid_cell.textContent += text;
+            }
+        }
+        config_cell.appendChild(generate_button);
+    </script>
+</body>
