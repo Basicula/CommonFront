@@ -10,6 +10,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             var target = document.getElementById("some_div_with_customizable_color");
             var color_picker = new ColorPicker();
+            color_picker.element.classList.add("color-picker");
             var selected_color = document.getElementById("selected_color");
             color_picker.onchange_callback = function() {
                 selected_color.textContent = color_picker.color;
