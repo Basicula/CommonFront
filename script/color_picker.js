@@ -9,7 +9,7 @@ class ColorPicker {
         this.element = document.createElement("div");
 
         this.image = document.createElement("img");
-        this.image.src = "https://combinatronics.com/Basicula/CommonFront/master/images/rgb_wheel.png";
+        this.image.src = "https://cdn.jsdelivr.net/gh/Basicula/CommonFront@master/images/rgb_wheel.png";
         this.element.appendChild(this.image);
 
         this.input = document.createElement("input");
